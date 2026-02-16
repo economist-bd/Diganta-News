@@ -20,7 +20,7 @@ import {
   setDoc
 } from 'firebase/firestore';
 import {
-  Menu, X as TwitterIcon, Search, User, ShieldCheck, Edit3, Trash2,
+  Menu, X, Search, User, ShieldCheck, Edit3, Trash2,
   Plus, Image as ImageIcon, Layout, Save,
   Share2, Download, LogOut, ChevronRight, AlertTriangle, Link as LinkIcon, Upload,
   Facebook, Youtube
@@ -487,7 +487,7 @@ export default function App() {
             <p className="text-gray-400 mb-2">সম্পাদক: {siteSettings.editorName}</p>
             <div className="flex justify-center gap-6 mb-6">
               {siteSettings.socialLinks?.facebook && <a href={siteSettings.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-red-500"><Facebook size={28} /></a>}
-              {siteSettings.socialLinks?.twitter && <a href={siteSettings.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-red-500"><TwitterIcon size={28} /></a>}
+              {siteSettings.socialLinks?.twitter && <a href={siteSettings.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-red-500"><X size={28} /></a>}
               {siteSettings.socialLinks?.youtube && <a href={siteSettings.socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-red-500"><Youtube size={28} /></a>}
             </div>
             <div className="border-t border-gray-800 pt-6">
@@ -642,7 +642,7 @@ export default function App() {
         <div className="space-y-6">
           <div className="bg-white p-6 rounded shadow">
             <h3 className="font-bold border-b pb-2 mb-4">সাইট সেটিংস</h3>
-            <div class className="space-y-4">
+            <div className="space-y-4">
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">সাইটের নাম</label>
                 <input value={siteSettings.siteName} onChange={e => handleSettingUpdate('siteName', e.target.value)} className="w-full p-2 border rounded" />
@@ -681,8 +681,8 @@ export default function App() {
                 <input value={siteSettings.socialLinks?.facebook || ''} onChange={e => handleSocialUpdate('facebook', e.target.value)} placeholder="https://facebook.com/..." className="w-full p-2 border rounded" />
               </div>
               <div>
-                <label className="text-xs font-bold text-gray-500 block mb-1">Twitter / X</label>
-                <input value={siteSettings.socialLinks?.twitter || ''} onChange={e => handleSocialUpdate('twitter', e.target.value)} placeholder="https://twitter.com/..." className="w-full p-2 border rounded" />
+                <label className="text-xs font-bold text-gray-500 block mb-1">X (Twitter)</label>
+                <input value={siteSettings.socialLinks?.twitter || ''} onChange={e => handleSocialUpdate('twitter', e.target.value)} placeholder="https://x.com/..." className="w-full p-2 border rounded" />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Youtube</label>
@@ -711,7 +711,7 @@ export default function App() {
               <div className="flex gap-3 mb-3">
                 <div className="relative border p-3 w-24 h-16 bg-gray-50 rounded flex items-center justify-center cursor-pointer">
                   <ImageIcon size={20} className="text-gray-400" />
-                  <input type="file" onChange={(e) => handleImageUpload(e, 'ad_sidebar')} className="absolute inset-0 opacity-0" accept="image/*" />
+                  <input type="file" onChange={(e) => handleImageUpload(e, 'ad_sidebar')} className="absolute w-full h-full opacity-0 cursor-pointer" accept="image/*" />
                 </div>
                 <input value={siteSettings.ads?.sidebar?.link || ''} onChange={e => handleAdLinkUpdate('sidebar', e.target.value)} placeholder="বিজ্ঞাপনের লিংক" className="flex-1 p-2 border rounded text-sm" />
               </div>
@@ -753,7 +753,7 @@ export default function App() {
   const LoginModal = () => (
     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
       <div className="bg-white w-full max-w-sm rounded-lg shadow-2xl p-8 relative">
-        <button onClick={() => setView('home')} className="absolute top-4 right-4 text-gray-400 hover:text-red-600"><X /></button>
+        <button onClick={() => setView('home')} className="absolute top-4 right-4 text-gray-400 hover:text-red-600"><X size={24} /></button>
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <ShieldCheck size={32} />
